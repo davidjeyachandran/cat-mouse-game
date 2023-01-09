@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat and the Mouse</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background: #eee;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Cat and the Mouse</h1>
+        <canvas id="myCanvas" width="800" height="800"></canvas>
+        <img style="display: none;" id="cat" src="images/cat-sm.png" height=50 alt="cat" />
+        <img style="display: none;" id="mouse" src="images/mouse-sm.png" height=50 alt="mouse" />
+    </div>
+
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var x_max = canvas.width;
+        var y_max = canvas.height;
+        const imgCat = document.getElementById("cat");
+        const imgMouse = document.getElementById("mouse");
+        ctx.drawImage(imgCat, 100, 100);
+        ctx.drawImage(imgMouse, 700, 600);
+
+    </script>
+</body>
+
+</html>
