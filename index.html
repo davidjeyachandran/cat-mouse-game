@@ -23,21 +23,36 @@
 
     <div class="container">
         <h1>Cat and the Mouse</h1>
-        <canvas id="myCanvas" width="800" height="800"></canvas>
+        <canvas id="myCanvas" width="600" height="400"></canvas>
         <img style="display: none;" id="cat" src="images/cat-sm.png" height=50 alt="cat" />
         <img style="display: none;" id="mouse" src="images/mouse-sm.png" height=50 alt="mouse" />
     </div>
 
 
     <script>
+
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         var x_max = canvas.width;
         var y_max = canvas.height;
         const imgCat = document.getElementById("cat");
         const imgMouse = document.getElementById("mouse");
-        ctx.drawImage(imgCat, 100, 100);
-        ctx.drawImage(imgMouse, 700, 600);
+        let xMouse = 110
+        let yMouse = 110
+        let xCat = 0;
+        let yCat = 100;
+        function draw() {
+            let xCatDif = xCat-xMouse
+            let yCatDif = yCat-yMouse
+            if(xCat>=x_max ||yCat>=y_max){
+                return;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(imgCat, xCat++, yCat++);
+            // yCat = y=2*xCat*xCat+100
+            ctx.drawImage(imgMouse, 280, 300);
+        }
+        setInterval(draw, 50)
 
     </script>
 </body>
