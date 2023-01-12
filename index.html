@@ -37,22 +37,25 @@
         var y_max = canvas.height;
         const imgCat = document.getElementById("cat");
         const imgMouse = document.getElementById("mouse");
-        let xMouse = 110
-        let yMouse = 110
+        let xMouse = 280
+        let yMouse = 300
         let xCat = 0;
         let yCat = 100;
+        const xCatDif = xCat-xMouse
+        const yCatDif = yCat-yMouse
+        const ratio = xCatDif/yCatDif
+        console.log(xCatDif, yCatDif, ratio);
         function draw() {
-            let xCatDif = xCat-xMouse
-            let yCatDif = yCat-yMouse
             if(xCat>=x_max ||yCat>=y_max){
                 return;
             }
+            xCat/ratio;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(imgCat, xCat++, yCat++);
             // yCat = y=2*xCat*xCat+100
-            ctx.drawImage(imgMouse, 280, 300);
+            ctx.drawImage(imgMouse, xMouse, yMouse);
         }
-        setInterval(draw, 50)
+        setInterval(draw, 0)
 
     </script>
 </body>
