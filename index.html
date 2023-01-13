@@ -38,21 +38,23 @@
         const imgCat = document.getElementById("cat");
         const imgMouse = document.getElementById("mouse");
         let xMouse = 280
-        let yMouse = 300
+        let yMouse = 100
         let xCat = 0;
-        let yCat = 100;
+        let yCat = 0;
         const xCatDif = xCat-xMouse
         const yCatDif = yCat-yMouse
-        const ratio = xCatDif/yCatDif
+        const ratio = yCatDif/xCatDif
         console.log(xCatDif, yCatDif, ratio);
         function draw() {
             if(xCat>=x_max ||yCat>=y_max){
                 return;
             }
-            xCat/ratio;
+            if(xCat === xMouse && yCat === yMouse){
+                return
+            }
+            yCat = Math.round(xCat * ratio);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(imgCat, xCat++, yCat++);
-            // yCat = y=2*xCat*xCat+100
+            ctx.drawImage(imgCat, xCat++, yCat);
             ctx.drawImage(imgMouse, xMouse, yMouse);
         }
         setInterval(draw, 0)
